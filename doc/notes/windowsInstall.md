@@ -36,16 +36,22 @@ plugins: SLACTools, smtkProjectManagerPlugin, and smtkACE3PPlugin.
 * In the "Local Plugins" panel, look in the list for "SLACTools" and expand
   it by clicking the arrow to its left. In the expanded section, check the
   box labeled "Auto Load".
+* In the "Local Plugins" panel, look in the list for "smtkACE3PPlugin" and
+  expand it by clicking the arrow to its left. In the expanded section, check
+  the box labeled "Auto Load".
 * In the "Local Plugins" panel, look in the list for
   "smtkProjectManagerPlugin" and expand it by clicking the arrow to its left.
   In the expanded section, check the box labeled "Auto Load".
-* In the "Local Plugins" panel, click the "Load New ..." button and navigate
-  to the smtkACE3PPlugin.dll file. It is under the install "bin" directory, at
-  the path bin/smtk-3.3.0/smtkACE3PPlugin/smtkACE3PPlugin.dll. Select the
-  dll, which should add smtkACE3PPlugin to the "Local Plugins" panel. Expand
-  it by clicking its arrow and check the box labeled "Auto Load".
 * Close the panel, then close the application and restart. On restart, the
   "Project" menu should now be visible.
+
+If any of the three plugins are not shown in the panel, you might have to use
+the "Load New..." button to navigate to the plugin dll file in the package.
+The dll files can be found under the install "bin" directory, at the path
+bin/smtk-3.3.0/*.
+
+Also be aware that the Cumulus Jobs panel is not visible by default. To change
+that, open the "View" menu and check the "Cumulus Jobs" box.
 
 
 ## Settings Setup
@@ -62,6 +68,23 @@ workflows and project-root folders:
 * Below that item is an item labeled "Projects Root Folder". Set this to a
   folder on your file system to use as the default parent for all "projects"
   you create with modelbuilder.
+
+
+## "SSL support is required" Error
+
+When using the Cumulus Jobs panel and clicking the "NERSC Login" button, the
+system may respond with a popup error message "SSL support is required, you
+must rebuild Qt with SSL support." The message is not accurate -- instead the
+problem is that the machine does not have OpenSSL installed or has a version
+of OpenSSL that is too old for modelbuilder.
+
+As of January 2020, you can get the latest OpenSSL installer at
+https://slproweb.com/products/Win32OpenSSL.html. For standard Windows 10
+systems, you can use the first download, which is 3MB and labeled
+"Win64 OpenSSL v1.1.1d Light". The direct link is
+https://slproweb.com/download/Win64OpenSSL_Light-1_1_1d.exe. After installing
+OpenSSL, the "NERSC Login" should respond with a dialog for entering your
+NERSC account name, password, and MFA token.
 
 
 ## Known Issues
