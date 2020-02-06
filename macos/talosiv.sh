@@ -10,18 +10,18 @@ datecode=`date +%y%m%d`
 package_name=modelbuilder-ace3p-macos${os_version}-${datecode}
 echo package_name ${package_name}
 
-source_path=/Users/john/projects/slac/git/cmb-superbuild
+source_path=/Users/johnt/projects/slac/git/cmb-superbuild
 echo Using source path ${source_path}
 
 read -p "Are you sure the source path is correct and up to date? [y/N]: " -n 1 -r
-echo    # (optional) move to a new line
+echo    # (optional) move to a new line1
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
     echo Exiting
     exit 1
 fi
 
-cmake \
+/Users/johnt/Applications/CMake.app/Contents/bin/cmake \
   -GNinja \
   -DCMAKE_INSTALL_PREFIX:PATH=install \
   -DCMB_PACKAGE_FILE_NAME:STRING=${package_name} \
@@ -29,7 +29,7 @@ cmake \
   -DENABLE_cmbworkflows:BOOL=OFF \
   -DENABLE_DOCUMENTATION:BOOL=OFF \
   -DENABLE_python3:BOOL=ON \
-  -DQt5_DIR:PATH=/Users/john/projects/qt.io/5.12.6/clang_64/lib/cmake/Qt5 \
+  -DQt5_DIR:PATH=/Users/johnt/projects/qt/5.12.6/clang_64/lib/cmake/Qt5 \
   -DENABLE_smtkace3p:BOOL=ON \
   -DENABLE_smtkprojectmanager:BOOL=ON \
   -DENABLE_smtkresourcemanagerstate:BOOL=OFF \
@@ -41,5 +41,4 @@ cmake \
 
 ninja
 
-ctest -R modelbuilder > ctest.log 2>&1
-ls -l
+/Users/johnt/Applications/CMake.app/Contents/bin/ctest -R modelbuilder > ctest.log 2>&1
