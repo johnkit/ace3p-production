@@ -6,6 +6,9 @@
 FROM johnkit:cmb-ace3p-win-paraview
 SHELL [ "powershell", "-command"]
 
+# HACK for testing interim fixes
+# RUN cd C:/Users/ContainerUser/code/cmb-superbuild; git fetch origin ace3p-production; git checkout FETCH_HEAD; git log -1
+
 # Delete old cmake cache, which uses ninja generator
 RUN mv CMakeCache.txt Ninja-CMakeCache.txt
 

@@ -11,8 +11,8 @@ RUN C:/Python37/python.exe --version; exit 0
 RUN mkdir /Users/ContainerUser/code
 WORKDIR /Users/ContainerUser/code
 
-# Use ace3p-plugin branch with fixes and workarounds
-RUN git clone --recursive --depth 1 --branch ace3p-plugin https://gitlab.kitware.com/john.tourtellott/cmb-superbuild.git
+# Use ace3p-production branch with fixes and workarounds
+RUN git clone --recursive --depth 1 --branch ace3p-production https://gitlab.kitware.com/john.tourtellott/cmb-superbuild.git
 RUN cd cmb-superbuild; git rev-parse HEAD
 RUN cd C:/Users/ContainerUser/code/cmb-superbuild/superbuild; git remote add john https://gitlab.kitware.com/john.tourtellott/common-superbuild.git; git fetch john; git reset --hard john/package-system-python3-windows; git log -1
 

@@ -19,5 +19,5 @@ docker build -f cmb.dockerfile -t johnkit:cmb-ace3p-win-modelbuilder -m 20g --no
 
 # Create container so we can copy the package file
 docker create -it --name temp johnkit:cmb-ace3p-win-modelbuilder powershell
-docker cp temp:C:/Users/ContainerUser/build/cmb-superbuild/$package_name.zip .
+docker cp temp:C:/Users/ContainerUser/build/cmb-superbuild/$package_name.zip . ; exit 0
 docker rm -f temp
