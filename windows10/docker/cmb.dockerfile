@@ -5,8 +5,9 @@ FROM johnkit:cmb-ace3p-win-ace3p
 
 SHELL [ "powershell", "-command"]
 
-# HACK for testing interim fixes
+# HACKS for testing interim fixes
 # RUN cd C:/Users/ContainerUser/code/cmb-superbuild; git fetch origin ace3p-production; git checkout FETCH_HEAD; git log -1
+# RUN cd C:/Users/ContainerUser/code/cmb-superbuild/superbuild; git fetch john ace3p-production; git checkout FETCH_HEAD; git log -1
 
 # Klugey, but get package name from .package_name file, because build args don't work
 # COPY ./.package_name C:/Users/ContainerUser/.package_name
