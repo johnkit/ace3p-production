@@ -3,7 +3,7 @@
 set -e
 
 readonly common_sb_url="https://gitlab.kitware.com/paraview/common-superbuild.git"
-readonly commit="21d199f349605853be4b64c0306b316da6c18cc6"
+readonly commit="f24c3a9f5abfcae73275a00518d89cc8b1e25044"  # 18-Feb-2020
 
 readonly workdir="$HOME/misc/code/qt5"
 readonly srcdir="$workdir/src"
@@ -22,8 +22,10 @@ cd "$builddir"
 cmake \
   -DENABLE_qt5:BOOL=ON \
   "-Dqt_install_location:PATH=$HOME/misc/root/qt5" \
+  "-Dqt5_ENABLE_OPENSSL:BOOL=ON" \
   "-Dqt5_ENABLE_SVG:BOOL=ON" \
   "-Dqt5_EXTRA_CONFIGURATION_OPTIONS:STRING=-no-use-gold-linker" \
+  "-Dqt5_SOURCE_SELECTION:STRING=5.12" \
   -GNinja \
   "$srcdir/standalone-qt"
 ninja

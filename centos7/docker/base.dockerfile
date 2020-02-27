@@ -15,7 +15,11 @@ RUN yum install -y \
     libxcb-devel xorg-x11-xtrans-devel libXcursor-devel libXft-devel \
     libXinerama-devel libXrandr-devel libXrender-devel \
     dejavu-sans-fonts dejavu-sans-mono-fonts dejavu-serif-fonts \
-    xkeyboard-config
+    xkeyboard-config \
+    xcb-util-devel mesa-libGL-devel libxkbcommon-devel
+
+# Install packages required for Cumulus
+RUN yum install -y openssl-devel
 
 # Install a newer set of compilers from the Software Collections repos
 RUN yum install -y centos-release-scl && \

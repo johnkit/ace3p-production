@@ -1,10 +1,5 @@
 FROM johnkit/cmb-centos7-base
 MAINTAINER John Tourtellott <john.tourtellott@kitware.com>
-
-# Install ssl so that python can install from pypi
-USER root
-RUN yum install -y openssl-devel
-
 USER buildslave
 
 # Clone cmb-superbuild
