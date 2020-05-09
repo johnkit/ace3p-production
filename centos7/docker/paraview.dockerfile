@@ -1,4 +1,5 @@
 FROM johnkit/cmb-centos7-base
+# FROM johnkit/qtssl-test
 MAINTAINER John Tourtellott <john.tourtellott@kitware.com>
 USER buildslave
 

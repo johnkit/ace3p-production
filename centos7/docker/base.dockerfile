@@ -50,4 +50,4 @@ RUN scl enable devtoolset-7 -- sh /home/buildslave/install_ninja.sh
 
 # Install Qt
 COPY install_qt.sh /home/buildslave/install_qt.sh
-RUN scl enable devtoolset-7 -- sh /home/buildslave/install_qt.sh
+RUN scl enable devtoolset-7 -- sh /home/buildslave/install_qt.sh; exit 0
