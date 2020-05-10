@@ -1,6 +1,6 @@
-# docker build -f ace3p.dockerfile -t johnkit:cmb-ace3p-win-ace3p -m 20g --no-cache .
+# docker build -f ace3p.dockerfile -t johnkit/cmb-ace3p-win-ace3p -m 20g --no-cache .
 
-FROM johnkit:cmb-ace3p-win-projectmanager
+FROM johnkit/cmb-ace3p-win-projectmanager
 
 SHELL [ "powershell", "-command"]
 

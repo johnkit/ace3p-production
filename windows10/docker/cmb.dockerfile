@@ -1,7 +1,7 @@
-# Script to build johnkit:cmb-win-cmb
-# docker build -f cmb.dockerfile -t johnkit:cmb-win-cmb -m 20g --no-cache .
+# Script to build johnkit/cmb-win-cmb
+# docker build -f cmb.dockerfile -t johnkit/cmb-win-cmb -m 20g --no-cache .
 
-FROM johnkit:cmb-ace3p-win-ace3p
+FROM johnkit/cmb-ace3p-win-ace3p
 
 SHELL [ "powershell", "-command"]
 
