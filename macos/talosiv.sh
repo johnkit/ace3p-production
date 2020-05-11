@@ -34,6 +34,7 @@ fi
   -DENABLE_smtkprojectmanager:BOOL=ON \
   -DENABLE_smtkresourcemanagerstate:BOOL=OFF \
   -DENABLE_smtkusersguide:BOOL=OFF \
+  -Dsuperbuild_download_location:PATH=/Users/johnt/projects/downloads \
   -DTEST_cmb:BOOL=OFF \
   -DTEST_smtk:BOOL=OFF \
   -DUSE_SYSTEM_qt5:BOOL=ON \
@@ -41,4 +42,4 @@ fi
 
 ninja
 
-/Users/johnt/Applications/CMake.app/Contents/bin/ctest -R modelbuilder > ctest.log 2>&1
+/Users/johnt/Applications/CMake.app/Contents/bin/ctest -R modelbuilder -VV > ctest.log 2>&1
