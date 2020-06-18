@@ -1,3 +1,17 @@
+## 17-Jun-2020
+
+Fixes bug that caused job-submission logic to use wrong binary name
+and input filename (uppercase letters).
+
+Changes Track3P Minimum Enhancement Counter range to any positive
+floating point number.
+
+Replaces obsolete logic used in T3P and Track3P boundary sides sets.
+
+Other bug fixes and end-to-end testing.
+
+
+
 ## 03-Jun-2020
 
 Moves Track3P subtype field from Materials to Analysis tab.
