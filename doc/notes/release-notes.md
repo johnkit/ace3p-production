@@ -1,3 +1,20 @@
+## 27-Jun-2020
+
+Fixes numerous bugs in TEM3P and Track3P based on additional testing.
+
+Reorganizes Track3P emitters to be explicitly associated with model faces,
+instead of being attached to material attributes. This will make it easier
+to assign multiple emitters to the same surface.
+
+Replaces many export exceptions with warning messages.
+
+
+
+## 20-Jun-2020
+
+Fixes bugs in Track3P export logic.
+
+
 ## 17-Jun-2020
 
 Fixes bug that caused job-submission logic to use wrong binary name
