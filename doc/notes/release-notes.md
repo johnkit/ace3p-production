@@ -1,3 +1,10 @@
+## 28-Jun-2020
+
+Changes new-project interaction to 2 steps, so that the user first
+selects the project folder and modelbuilder verifies that it is empty
+or asks user permission to delete current contents.
+
+
 ## 27-Jun-2020
 
 Fixes numerous bugs in TEM3P and Track3P based on additional testing.
@@ -7,7 +14,6 @@ instead of being attached to material attributes. This will make it easier
 to assign multiple emitters to the same surface.
 
 Replaces many export exceptions with warning messages.
-
 
 
 ## 20-Jun-2020
