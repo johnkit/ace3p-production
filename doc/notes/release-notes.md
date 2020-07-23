@@ -1,3 +1,8 @@
+## 21-Jul-2020
+
+Fixes directory browser issues when creating new project.
+
+
 ## 28-Jun-2020
 
 Changes new-project interaction to 2 steps, so that the user first

@@ -11,9 +11,10 @@ Before starting:
   particular, be sure you have (i) set the smtkProjectManagerPlugin to load
   automatically, (ii) configured the applications settings/preferences items
   "Workflows Folder" and "Projects Root Folder".
-* The example requires a mesh file, preferably small and of type genesis (.gen).
+
 
 ## Initial View Setup
+
 When first starting the application, a number of view panels appear on the left-
 hand side of the application. Each panel is a Dock Widget that can be closed or
 undocked in the same way that ParaView panels work. For simulation preprocessing,
@@ -30,19 +31,31 @@ configuration they prefer:
   widown size.You can change any of the fields as preferred, but
 * Select the Resoures view (tab).
 
+
 ## Creating a Project
 
-From the Project menu, select "New Project...", which brings up a dialog window.
-If things have been configured correctly, you should only need to enter two items
-in the dialog:
+From the Project menu, select "New Project...", which brings up a dialog window
+for creating or selecting the directory for storing project files.
 
-* "Name (Subdirectory)" - the project name, which is used as the subdirectory for
-  storing project assets. As such, the string you enter must be a valid directory
-  name.
-* "Geometry File" - a mesh file, typically type .gen.
+* This first dialog will start in the "Projects Roots Folder" if that has been
+  defined in the application settings, otherwise it starts in the current
+  working directory.
+* In this dialog, you cannot enter text to create a directory. Instead, you can
+  create directories by clicking the folder icon near the upper right corner
+  of the dialog.
+* After a directory is selected, modelbuilder will display a warning popup if the
+  selected directory contains files or subdirectories. The is then given the
+  option to (i) continue, in which case modelbuilder deletes all of the current
+  directory contents, (ii) cancel the new-project action, or (iii) select a
+  different directory.
+* After the directory is selected, modelbuilder will display a "New Project"
+  dialog with the project name filled in. If things have been configured
+  correctly, you should only need to enter a "Geometry File", which be either
+  a .gen file or .ncdf file. (If you use a .gen file, modelbuilder will
+  automatically run the ACDTool meshconvert when submitting jobs to NERSC.
 
-After entering the two fields, click the "Apply" button and two resources are
-imported into the project and displayed in modelbuilder.
+After entering the geometry file, click the "Apply" button and the project is
+project is created and its contents displayed in modelbuilder.
 
 Once the model appears in the 3D view, is it important to SAVE THE PROJECT WHEN
 IT IS FIRST CREATED. This is because, at present, the contents of the attribute
@@ -54,6 +67,7 @@ defining the simulation attributes with the same UI as in previous versions of
 modelbuilder. When you have completed defining the simulation, be sure to save
 the project again.
 
+
 ## Writing Solver Input
 
 To generate the solver file, use the "Project Export" item in the "Project" menu,
@@ -64,12 +78,13 @@ directory.
 
 To submit as a simulation job to NERSC, see the next section.
 
+
 ## Submitting to NERSC
 
 Because NERSC now requires multifactor authentication, modelbuilder has changed the
 sign-in logic to make it simpler.
 
-Before submitting any jobs, go to the "Cumulus Jobs" panel and click the "NERSC\
+Before submitting any jobs, go to the "Cumulus Jobs" panel and click the "NERSC
 Login" button, which opens a dialog for entering your username, password, and MFA
 token. On successful sign-in, you should see a 32-character string displayed next
 to the "NERSC Login" button. This string is a "NEWT session id", which should
@@ -79,6 +94,15 @@ you will need to login once each time you start modelbuilder.
 Once you have signed in this way, you can select the "Submit job to NERSC" option
 in the project export panel. Note that the NEWT session id appears in one of the
 dialog fields.
+
+## Monitoring Jobs
+
+You can view the status of all jobs submitted to NERSC in the Cumulus Jobs
+panel. The status column, which is updated approximately every 15 seonds,
+displays "created", "queued", "running", "completed", or "error". You can use
+the context menu to delete jobs, termanate running jobs, and download results
+from completed jobs.
+
 
 ## Saving Projects
 

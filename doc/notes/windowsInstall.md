@@ -1,4 +1,4 @@
-# CMB Modelbuilder Install Instructions
+# CMB Modelbuilder Install Instructions for Windows
 
 The CMB modelbuilder application can be used to create ACE3P input
 files from data entered in form-style attribute panels.
@@ -69,6 +69,15 @@ workflows and project-root folders:
   folder on your file system to use as the default parent for all "projects"
   you create with modelbuilder.
 
+Modelbuilder includes a toolbar icon that can be used to launch the CUBIT
+Geometry and Mesh Generation Toolkit, if installed on the same machine.
+
+![Cubit Icon](./cubit-icon.png).
+
+To configure the icon, open the Settings dialog and find the "ACE3P" tab.
+Set the path to the CUBIT executable on your file system using the browse
+button next to the CUBIT field.  
+
 
 ## "SSL support is required" Error
 
@@ -89,9 +98,6 @@ NERSC account name, password, and MFA token.
 
 ## Known Issues
 
-In the 05-jan-2020 build, the resource manager does not display visibility
-icons (eyeballs).
-
-There is a known problem on systems using Intel HD graphics, when displaying
-data loaded by the SLACTools plugin. At present, the only workaround for this
+Using SLACTools to display simulation results, there is a known problem on
+systems with Intel HD graphics. At present, the only workaround for this
 is to install and use ParaView 5.6 and its SLACTools plugin.

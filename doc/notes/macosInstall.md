@@ -1,4 +1,4 @@
-# CMB Modelbuilder Install Instructions
+# CMB Modelbuilder Install Instructions for macOS
 
 The CMB modelbuilder application can be used to create ACE3P input
 files from data entered in form-style attribute panels.
@@ -27,17 +27,22 @@ to open the application.
 
 ## Plugin Setup
 
-The first time you run modelbuilder, one of the plugins used for ACE3P might
-not be loaded by default. The way to check is to look for a "Project" menu
-between "Macros" and "Help". If there is no "Project" menu, use these steps to
-update the application to auto-load the plugin named smtkProjectManagerPlugin.
+The first time you run modelbuilder, the plugins used for ACE3P might not
+be loaded. Use these steps to update the application to auto-load three
+plugins: SLACTools, smtkProjectManagerPlugin, and smtkACE3PPlugin.
 
 * In the "Tools" menu, select "Manager Plugins...", which brings up a dialog
   with two panels labeled "Remote Plugins" (which should be empty) and
   "Local PLugins".
+* In the "Local Plugins" panel, look in the list for "SLACTools" and expand
+  it by clicking the arrow to its left. In the expanded section, check the
+  box labeled "Auto Load".
+* In the "Local Plugins" panel, look in the list for "smtkACE3PPlugin" and
+  expand it by clicking the arrow to its left. In the expanded section, check
+  the box labeled "Auto Load".
 * In the "Local Plugins" panel, look in the list for
   "smtkProjectManagerPlugin" and expand it by clicking the arrow to its left.
-* In the expanded section, check the checkbox labeled "Auto Load".
+  In the expanded section, check the box labeled "Auto Load".
 * Close the panel, then close the application and restart. On restart, the
   "Project" menu should now be visible.
 
@@ -57,3 +62,12 @@ Workflows and project-root folders:
 * Below that item is an item labeled "Projects Root Folder". Set this to a
   folder on your file system to use as the default parent for all "projects"
   you create with modelbuilder.
+
+Modelbuilder includes a toolbar icon that can be used to launch the CUBIT
+Geometry and Mesh Generation Toolkit, if installed on the same machine.
+
+![Cubit Icon](./cubit-icon.png).
+
+To configure the icon, open the Preferences dialog and find the "ACE3P" tab.
+Set the path to the CUBIT executable on your file system using the browse
+button next to the CUBIT field.
