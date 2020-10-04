@@ -1,0 +1,36 @@
+{
+    "name": "Example Test",
+    "steps": [
+       {
+          "title": "Setup",
+          "action": "Complete the setup procedures first."
+       },
+       {
+          "title": "Clone ace3p-extensions repository",
+          "action": "Clone the ace3p-extensions repository, either https://gitlab.kitware.com/cmb/plugins/ace3p-extensions.git or git@gitlab.kitware.com:cmb/plugins/ace3p-extensions.git."
+       },
+       {
+          "title": "New project",
+          "action": "Select Project => New Project...",
+          "expect": "modelbuilder to open a directory browser dialog"
+       },
+       {
+          "title": "New project directory",
+          "action": "In that dialog, navigate to the test directory you created in the setup procedure and create a subdirectory `omega3p-test1`. Select the new subdirectory and click the `OK`.",
+          "expect": "modelbuilder to display a \"Specify New Project\" dialog with the \"Workspace Directory\" and \"Name (Subdirectory)\" fields set."
+       },
+       {
+          "title": "Simulation template \"ACE3P.sbt\"",
+          "action": "Set the \"Simulation Template File\" to the ACE3P template that is in the ace3p-extensions repository at `simulation-workflows/ACE3P.sbt`."
+       },
+       {
+          "title": "Geometry model \"pillbox4.gen\"",
+          "action": "Set the \"Geometry File\" to `data/model/3d/genesis/pillbox4.gen`."
+       },
+       {
+          "title": "Apply",
+          "action": "Click the \"Apply\" button.",
+          "expect": "modelbuilder to close the dialog, then display the model geometry in the 3D view and update the Attribute Editor to display a \"Modules\" tab. On some systems, the model is not immediately displayed, but instead it appears when the \"Resources\" tab is selected. If that occurs, add a comment to the GitLab issue. Verify that there are two items listed in the \"Resources\" panel, labeled `sbi.default` and `pillbox4`."
+       }
+    ]
+ }
