@@ -11,7 +11,7 @@ Before starting:
   particular, be sure you have (i) set the smtkProjectManagerPlugin to load
   automatically, (ii) configured the applications settings/preferences items
   "Workflows Folder" and "Projects Root Folder".
-
+n
 
 ## Initial View Setup
 
@@ -44,13 +44,13 @@ for creating or selecting the directory for storing project files.
   create directories by clicking the folder icon near the upper right corner
   of the dialog.
 * After a directory is selected, modelbuilder will display a warning popup if the
-  selected directory contains files or subdirectories. The is then given the
+  selected directory contains files or subdirectories. You are then given the
   option to (i) continue, in which case modelbuilder deletes all of the current
   directory contents, (ii) cancel the new-project action, or (iii) select a
   different directory.
-* After the directory is selected, modelbuilder will display a "New Project"
+* After the directory is selected, modelbuilder displays a "New Project"
   dialog with the project name filled in. If things have been configured
-  correctly, you should only need to enter a "Geometry File", which be either
+  correctly, you should only need to enter a "Geometry File", which be
   a .gen file or .ncdf file. (If you use a .gen file, modelbuilder will
   automatically run the ACDTool meshconvert when submitting jobs to NERSC.
 
