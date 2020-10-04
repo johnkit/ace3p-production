@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>UI Testing</title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/http-vue-loader"></script>
+
+</head>
+<body>
+    <div id="app">
+        <test-list :tests="tests" @selected="onSelected"></test-list>
+        <hr />
+        <!-- <test-sequence v-if="selectedTest" :test="selectedTest"></test-sequence> -->
+    </div>
+
+    <script>
+        let testNames = [
+            'example',
+            'setup',
+            '01-omega3p-test1',
+        ];
+
+        new Vue({
+            el: '#app',
+            components: {
+                'test-list': httpVueLoader('TestList.vue')
+            },
+            data: function() {
+                return {
+                    selectedTest: null,
+                    tests: testNames,
+                }
+            },  // data
+            methods: {
+                onSelected: function(test) {
+                    this.selectedTest = test;
+                    console.log(`User selected test ${this.selectedTest}`)
+                }
+            },  // methods
+        });
+    </script>
+</body>
