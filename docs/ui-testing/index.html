@@ -6,22 +6,23 @@
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/http-vue-loader"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./testNames.js"></script>
 </head>
 <body>
+    <h3>UI Tests</h3>
     <div id="app">
         <test-list :tests="tests" @selected="onSelected"></test-list>
         <hr />
         <test-runner v-if="selectedTest" :test="selectedTest"></test-runner>
     </div>
+    <br />
+    <br />
+    <a href="/">ace3p-production home</a>
 
     <script>
-        let testNames = [
-            'example',
-            'setup',
-            '01-omega3p-test1',
-        ];
+        // Note: variable "testNames" injected by testNames.js
 
-        // Use has to prevent httpVueLoader caching
+        // Use hash to prevent httpVueLoader caching
         let hash = Math.random().toString(36).substring(2, 8);
         let qhash = `?${hash}`;
 
