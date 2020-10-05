@@ -11,10 +11,7 @@
             </div>
             <div>
                 <button :disabled="isNextDisabled" @click="stepNumber++">Next</button>
-                {{isNextDisabled}}
-                <br />
                 <button :disabled="stepNumber == 0" @click="stepNumber--">Back</button>
-                {{stepNumber}}, {{stepNumber == 0}}
             </div>
         </div>
     </div>
@@ -33,7 +30,7 @@ module.exports = {
         startTest: function() {
             // console.log(`TestRunner updating test ${this.test}`);
             let ts = Date.now();
-            let filename = `../tests/${this.test}.json?${ts}`;
+            let filename = `./data/${this.test}.json?${ts}`;
             axios.get(filename)
                 .then(response => {
                     this.sequence = response.data;
@@ -61,4 +58,7 @@ module.exports = {
 </script>
 
 <style scoped>
+    button {
+        margin-right: 1em;
+    }
 </style>
