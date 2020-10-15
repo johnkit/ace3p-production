@@ -36,9 +36,9 @@ steps:
     action: |
       In the "Boundary Conditions" panel:
       <ol>
-        <li>Set "Unnamed set ID: 1" to "Magnetic".
-        <li>Set "Unnamed set ID: 2" to "Magnetic".
-        <li>Set "Unnamed set ID: 6" to "Exterior".
+        <li>Set "Unnamed set ID: 1" to "Magnetic".</li>
+        <li>Set "Unnamed set ID: 2" to "Magnetic".</li>
+        <li>Set "Unnamed set ID: 6" to "Exterior".</li>
       </ol>
 
   - title:  Set Analysis options
