@@ -1,17 +1,23 @@
 <template>
-    <div>
+    <div class="sequence">
         <div v-if="sequence">
             <h4>{{sequence.name}}</h4>
             <div v-for="(step,index) in sequence.steps" :key="index">
-                <div v-show="index == stepNumber">
-                    <p>{{index + 1}}. {{step.title}}</p>
-                    <p>{{step.action}}</p>
-                    <p v-if="step.expect">Expect: {{step.expect}}</p>
+                <div class="step"  :class="{minimized: index != stepNumber}">
+                    <div class="step-header">{{index + 1}}. {{step.title}}</div>
+                    <div class="step-content">
+                      <p><strong>Action: </strong>{{step.action}}</p>
+
+                      <p v-if="step.expect"><strong>Expect: </strong>{{step.expect}}</p>
+
+                      <div>
+                        <button :disabled="stepNumber == 0" @click="stepNumber--">Back</button>
+                        <button :disabled="isNextDisabled" @click="stepNumber++">Next</button>
+                      </div>
+                    </div>
                 </div>
             </div>
             <div>
-                <button :disabled="isNextDisabled" @click="stepNumber++">Next</button>
-                <button :disabled="stepNumber == 0" @click="stepNumber--">Back</button>
             </div>
         </div>
     </div>
