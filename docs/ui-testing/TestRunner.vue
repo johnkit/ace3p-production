@@ -6,9 +6,9 @@
         <div class="step"  :class="{minimized: index != stepNumber}">
           <div class="step-header">{{index + 1}}. {{step.title}}</div>
           <div class="step-content">
-            <p><strong>Action: </strong>{{step.action}}</p>
+            <p><strong>Action: </strong><span v-html="step.action"></span></p>
 
-            <p v-if="step.expect"><strong>Expect: </strong>{{step.expect}}</p>
+            <p v-if="step.expect"><strong>Expect: </strong><span v-html="step.expect"></span></p>
 
             <div>
             <button :disabled="stepNumber == 0" @click="stepNumber--">Back</button>
