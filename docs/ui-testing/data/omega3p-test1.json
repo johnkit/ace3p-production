@@ -38,7 +38,7 @@
       "title": "Set Omega3P module"
     },
     {
-      "action": "In the \"Boundary Conditions\" panel:\n<ol>\n  <li>Set \"Unnamed set ID: 1\" to \"Magnetic\".\n  <li>Set \"Unnamed set ID: 2\" to \"Magnetic\".\n  <li>Set \"Unnamed set ID: 6\" to \"Exterior\".\n</ol>\n",
+      "action": "In the \"Boundary Conditions\" panel:\n<ol>\n  <li>Set \"Unnamed set ID: 1\" to \"Magnetic\".</li>\n  <li>Set \"Unnamed set ID: 2\" to \"Magnetic\".</li>\n  <li>Set \"Unnamed set ID: 6\" to \"Exterior\".</li>\n</ol>\n",
       "title": "Set Boundary Conditions"
     },
     {

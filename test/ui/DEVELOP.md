@@ -36,7 +36,7 @@ As noted above, each test is specified as a yaml file in the `test/ui/specs` fol
 From Windows Command Prompt:
 
 ```
-> cd test/ui
+> cd test
 > venv-pages\Scripts\activate
 ```
 
@@ -56,11 +56,16 @@ From Windows Command Prompt:
 2\. Create the virtual environment for this project. From a terminal:
 
 ```
-> cd test/ui
+> cd test
 > python -m venv venv-pages
 ```
+3\.Activate the virtual environment from the windows prompt
+```
+> venv-pages\Scripts\activate
 
-3\. Install the python packages listed in the `requirements.txt` file:
+```
+## Note that venv text appears in the command prompt 
+4\. Install the python packages listed in the `requirements.txt` file:
 
 ```
 > pip install -r requirements.txt
