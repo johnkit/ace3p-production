@@ -1,4 +1,4 @@
 let testNames = [
-  "omega3p-test1",
-  "example"
+  "assign_colors",
+  "omega3p-test1"
 ]
