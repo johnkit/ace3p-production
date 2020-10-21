@@ -1,0 +1,76 @@
+{
+  "name": "track3p_WindowSolidVacuumEmission",
+  "steps": [
+    {
+      "action": "Make sure you have already completed the setup procedures first, including creating a new directory for project tests.",
+      "title": "Setup"
+    },
+    {
+      "action": "Make sure you have clone the ace3p-extensions repository, either https://gitlab.kitware.com/cmb/plugins/ace3p-extensions.git or git@gitlab.kitware.com:cmb/plugins/ace3p-extensions.git, and are using the current master branch.",
+      "title": "ace3p-extensions repository"
+    },
+    {
+      "action": "Select Project => New Project...",
+      "expect": "modelbuilder to open a directory browser dialog",
+      "title": "New project"
+    },
+    {
+      "action": "In that dialog, navigate to the test directory you created in the setup procedure and create a subdirectory `track3p_Window`. Select the new subdirectory and click the `OK`.",
+      "expect": "modelbuilder to display a \"Specify New Project\" dialog with the \"Workspace Directory\" and \"Name (Subdirectory)\" fields set.",
+      "title": "New project directory"
+    },
+    {
+      "action": "Set the \"Simulation Template File\" to the ACE3P template that is in the ace3p-extensions repository at `simulation-workflows/ACE3P.sbt`.",
+      "title": "Simulation template \"ACE3P.sbt\""
+    },
+    {
+      "action": "Set the \"Geometry File\" to `data/model/3d/netcdf/Window.ncdf`. You will need to set the extension dropdown to \"netcdf\".",
+      "title": "Geometry model \"Window.ncdf\""
+    },
+    {
+      "action": "Click the \"Apply\" button.",
+      "expect": "modelbuilder to close the dialog, then display the model geometry in the 3D view and update the Attribute Editor to display a \"Modules\" tab. On some systems, the model is not immediately displayed, but instead it appears when the \"Resources\" tab is selected. If that occurs, add a comment to the GitLab issue. Verify that there are two items listed in the \"Resources\" panel, labeled `sbi.default` and `Window`.",
+      "title": "Apply"
+    },
+    {
+      "action": "Select Project => Save Project",
+      "expect": "modelbuilder Output Messages to include \"Saved Project\".",
+      "title": "Save Project"
+    },
+    {
+      "action": "In the Attribute Editor \"Modules\" tab, select \"Track3P\" as the Module. This should display a second dropdown labeled \"Track3P. In that second dropdown, select \"Multipacting\".",
+      "expect": "AttributeEditor to display new tabs \"Analysis\", \"Field Scaling\", \"Emitter\", \"Material\", \"Postprocess\"",
+      "title": "Set Track3P"
+    },
+    {
+      "action": "In the \"Input Data\" section, check the \"Source\" checkbox. A \"Path\" field should appear - copy this text into it\":\" /global/cscratch1/sd/johnt/test1/JOBID/s3p_results",
+      "expect": "TODO",
+      "title": "Set input data"
+    },
+    {
+      "action": "In the \"Field Scaling\" tab. Set \"Type\" to \"Input Port Power -W\"",
+      "expect": "TODO",
+      "title": "Field Scaling"
+    },
+    {
+      "action": "In the \"Analysis\" panel \n<ol>\n  <li>Select Analysis tab</li>\n  <li>Total Particle Tracking Time (Cycles) to 10</li>\n  <li>Localize Bins to 128</li>\n  <li>Enable Solid Region and set to \"volume 2\"</li>\n  <li>Enable Vacuum Regoin and set to \"volume 1\"</li>\n</ol>\n",
+      "title": "Analysis tab"
+    },
+    {
+      "action": "In the \"Field\" panel\n<ol>\n <li>Select Field Scaling.</li>\n <li>Set the \"Scan Token\" to \"0\":\"\" Single Field Level\".</li>\n <li>Set the \"Scale\" to 8.0e+6</li>\n</oi>\n",
+      "title": "Field Scaling"
+    },
+    {
+      "action": "In the \"Emmiter\" Panel\n<ol>\n  <li>Emitters section click \"New\", emitter-type5</li>\n  <li>Set \"Type\" to \"5\":\"\" Solid Electronic Surface\"</li>\n  <li>Region Bounds Min 0,0, -0.002</li>\n  <li>Region Bounds Max 0.045, 0.045, 0</li>\n  <li>Association Widget assign surface 6</li>\n</ol>\nIn the same \"Emmitter\" Panel\n<ol>\n  <li>\"New\" emitter-type2</li>\n  <li>Region Bounds Min 0.001, 0.001, -0.002</li>\n  <li>Region Bounds Max 0.045, 0.045, 0.06</li>\n  <li>Association Widget assign surface 6</li>\n</oi>\n",
+      "title": "Emmitter Type"
+    },
+    {
+      "action": "In the \"Material\" Panel\n<ol>\n  <li>Select Absorber and click \"New\" select surfaces 1, 2, 7, 8.</li>\n  <li>Select Primary => \"New\" Enable Secondary and select surface 6</li>\n  <li>Select Primary => \"New\" and select surface 2</li>\n</ol>\n",
+      "title": "Material Type"
+    },
+    {
+      "action": "<ol>\n  <li>Project => Save Project</li>\n  <li>Project => Export Project</li>\n  <li>Apply</li>\n  <li>Chech that file was generated track3p_Window.track3p</li>\n</ol>\n",
+      "title": "Saving and Exporting"
+    }
+  ]
+}
