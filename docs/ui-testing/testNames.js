@@ -1,4 +1,5 @@
 let testNames = [
+  "example",
   "omega3p-test1",
-  "example"
+  "track3p_WindowSolidVacuumEmission"
 ]
