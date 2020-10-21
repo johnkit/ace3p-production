@@ -1,0 +1,63 @@
+name: assign-colors
+
+steps:
+  - title: Setup
+    action: Load your desired model.
+
+  - title: Opening your model
+    action: If an "open Data With..." dialog pop-ups select 'SMTK importer for "fileName" into smtk::session::vk::Resource"
+    expect: Model to apper in 3D view.
+  
+  - title:  Setting two-level representation
+    action: |
+      In the "Boundary Conditions" panel:
+      <ol>
+        <li>Edit => Settings => Sim Pre-processing.</li>
+        <li>Locate the drop down menu that says "hierarchical" and change it to "two-level".</li>
+        <li>Press "Apply" and "OK" Please note that it is a requirement to select both.</li>
+        <li>Close and restart Modelbuilder.</li>
+      </ol>
+      expect: Resources tab should be organized with drop down menus named "models", "volume", and "faces".
+
+  - title: View direction
+    action: Locate the view options on the second row of the tool bar and select the positive(+) Y direction.
+    expect: The model should change views.
+
+  - title: Hide and Show
+    action: |
+      To hide all items in a branch.
+      <ol>
+        <li>Click on the first item + shift-click last item + Space</li>
+      </ol>
+      To show items individually
+      <ol>
+        <li>Select the eye ball</li>
+      </ol>
+
+  - title: Enabling Operations
+    action: Click the "view" tab on the top left of model builder and select the "operations" option.
+    expect: Model builder to open up an "operations" window on the bottom left.
+
+  - title: Adding color options
+    action: In the "operations" window unclick the checked box and locate and double-click "smtk::model::AssignColors"
+    expect: Operation editor to appear.
+
+  - title: Changing the colors
+    action: |
+      In the operations editor
+      <ol>
+        <li>Click the dropdown menu in the "entities" tab.</li>
+        <li>Select all of the entities</li>
+        <li>In the "apply colors" tab select the second option with all of the colors.</li>
+        <li>Change the opacity scale to 0.5</li>
+      </ol>
+      expect: The 3D model will be colored randomly and semi-transparent.
+      
+  - title: Saving and Closing
+    action: |
+      <ol>
+        <li>Close the "operations" window</li>
+        <li>Save the file locally as "casting-color.smtk"</li>
+      </ol>
+      expect: Two files get written an .smtk and .exo
+
