@@ -40,7 +40,7 @@ From Windows Command Prompt:
 > venv-pages\Scripts\activate
 ```
 
-3\. After making changes, use the `compile_tests.py` script, which loads each yaml file in the `specs` folder and generates the corresponding json file in `docs/ui-testing/data`.
+3\. After making changes, use the `python compile_tests.py` script, which loads each yaml file in the `specs` folder and generates the corresponding json file in `docs/ui-testing/data`.
 
 ```
 > python compile_tests.py

@@ -37,6 +37,7 @@ if __name__ == "__main__":
                 test_names.append(base)
 
     # Generate specfiles.js with list of json files
+    test_names.sort()
     js_text = 'let testNames = ' + json.dumps(test_names, indent=2)
     #print(js_text)
     js_file = 'testNames.js'

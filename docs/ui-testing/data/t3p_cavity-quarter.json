@@ -1,0 +1,66 @@
+{
+  "name": "t3p_cavity-quarter",
+  "steps": [
+    {
+      "action": "Complete the setup procedures first.",
+      "title": "Setup"
+    },
+    {
+      "action": "Clone the ace3p-extensions repository, either\n<a class=\"literal-link\" target=\"_blank\" href=\"https://gitlab.kitware.com/cmb/plugins/ace3p-extensions.git\"></a>\nor <a class=\"literal-link\" target=\"_blank\" href=\"git@gitlab.kitware.com:cmb/plugins/ace3p-extensions.git\"></a>.\n",
+      "title": "Clone ace3p-extensions repository"
+    },
+    {
+      "action": "Select Project => New Project...",
+      "expect": "modelbuilder to open a directory browser dialog",
+      "title": "New project"
+    },
+    {
+      "action": "In that dialog, navigate to the test directory you created in the setup procedure and create a subdirectory `t3p_cavity-quarter`. Select the new subdirectory and click the `OK`.",
+      "expect": "modelbuilder to display a \"Specify New Project\" dialog with the \"Workspace Directory\" and \"Name (Subdirectory)\" fields set.",
+      "title": "New project directory"
+    },
+    {
+      "action": "Set the \"Simulation Template File\" to the ACE3P template that is in the ace3p-extensions repository at `simulation-workflows/ACE3P.sbt`.",
+      "title": "Simulation template \"ACE3P.sbt\""
+    },
+    {
+      "action": "Set the \"Geometry File\" to `data/model/3d/netcdf/pillboxwg.ncdf`. You will need to set the extension dropdown to \"netcdf\".",
+      "title": "Geometry model \"pillboxwg.ncdf\""
+    },
+    {
+      "action": "Click the \"Apply\" button.",
+      "expect": "modelbuilder to close the dialog, then display the model geometry in the 3D view and update the Attribute Editor to display a \"Modules\" tab. On some systems, the model is not immediately displayed, but instead it appears when the \"Resources\" tab is selected. If that occurs, add a comment to the GitLab issue. Verify that there are two items listed in the \"Resources\" panel, labeled `sbi.default` and `pillboxwg`.",
+      "title": "Apply"
+    },
+    {
+      "action": "Select Project => Save Project",
+      "expect": "modelbuilder Output Messages to include \"Saved Project\".",
+      "title": "Save Project"
+    },
+    {
+      "action": "In the Attribute Editor select the \"Modules\" tab and select \"T3P\" as the module in the drop down menu.",
+      "expect": "Six tabs should appear in the attribute editor labeled Boundary Conditions, Materials, Analysis, Beam Info, Loading, and Monitors.",
+      "title": "Set T3P"
+    },
+    {
+      "action": "In the \"Boundary Condition\" tab\n<ol>\n  <li>Set surface 1 and 2 = Magnetic</li>\n  <li>Set surface 3 and 4 = Absorbing</li>\n  <li>Set surface 5 and 6 = Exterior</li>\n</ol> \n",
+      "title": "Setting Boundary Conditions"
+    },
+    {
+      "action": "In the \"Analysis\" tab\n<ol>\n  <li>Change the \"Liner Solver\" dropdown to \"MUMPS\"</li>\n  <li>Set the max time to 5e-09</li>\n  <li>Set time steps to 2e-12</li>\n</ol> \n",
+      "title": "Analysis Settings"
+    },
+    {
+      "action": "In the \"Beam Info\" tab\n<ol>\n  <li>Click on the \"new\" button</li>\n  <li>Set the name to \"BeamLoading\"</li>\n  <li>Set the bunch type to \"Gaussian\"</li>\n  <li>Enter 0.01 as the RMS Bunch Legion and 5 as the number of legions</li>\n  <li>Set the symmetry factor to 4</li>\n  <li>Set the charge to 1.0e-12</li>\n  <li>Set the start point to 0, 0, -0.075 respectively </li>\n  <li>Set the source boundary to surface 3</li>\n</ol> \n",
+      "title": "Beam Info Settings"
+    },
+    {
+      "action": "In the \"Monitor\" tab\n<ol>\n  <li>Set the drop down menu to \"Volume\"</li>\n  <li>Click on the \"new\" button and click enter</li>\n  <li>The \"Name\" box should be blank and red - make the name \"mymon\"</li>\n  <li>Set the Start time to 0, End time to 5e-09, and the Interval to 1e-10</li>\n</ol>\n\n  In the same tab change the drop down to \"Wakefield\" click \"new\" and the enter\n\n<ol>\n  <li>The \"Name\" box should be blank and red - make the name \"wakefield\"</li>\n  <li>Set Start contour to -0.075 and End contour to 0.075 with a Max distance of 1.4\n</ol>\n\nIn the same tab change the drop down to \"Power\" click \"new\" and the enter\n\n<ol>\n  <li>The \"Name\" box should be blank and red - make the name \"power-monitor\"</li>\n  <li>Set the monitor boundary to surface 5</li>\n</ol>\n\nIn the same tab change the drop down to \"Voltage\" click \"new\" and the enter\n\n<ol> \n  <li>The \"Name\" box should be blank and red - make the name \"mode-voltage\"</li>\n  <li>Set the monitor port to surface 6</li>\n</ol>\n",
+      "title": "Monitor settings"
+    },
+    {
+      "action": "Save, export, and verify that the .t3p file has been generated.",
+      "title": "Saving"
+    }
+  ]
+}
