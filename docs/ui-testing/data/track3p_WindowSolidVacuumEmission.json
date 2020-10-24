@@ -69,7 +69,7 @@
       "title": "Material Type"
     },
     {
-      "action": "<ol>\n  <li>Project => Save Project</li>\n  <li>Project => Export Project</li>\n  <li>Apply</li>\n  <li>Chech that file was generated track3p_Window.track3p</li>\n</ol>\n",
+      "action": "From the \"Project\" menu\n<ol>\n  <li>Project => Save Project</li>\n  <li>Project => Export Project</li>\n  <li>Apply</li>\n  <li>Check that file was generated track3p_Window.track3p</li>\n</ol>\n",
       "title": "Saving and Exporting"
     }
   ]
