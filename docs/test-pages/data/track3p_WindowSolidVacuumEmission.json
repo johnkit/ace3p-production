@@ -38,7 +38,7 @@
       "title": "Save Project"
     },
     {
-      "action": "<li>Select whether to record or play the test. In general, you should select PLAY if the xml file is available.</li>\n<li>If you select PLAY, use the \"Tools\" => \"Play Test...\" menu item and navigate to the \"track3p_Window.xml\" file.</li>\n<li>If you select RECORD, use the \"Tools\" => \"Record Test...\" menu and specify \"track3p_Window.xml\" as the file.</li>    \n",
+      "action": "<li>Select whether to record or play the test. In general, you should select PLAY if the xml file is available.</li>\n<li>If you select PLAY, use the \"Tools\" => \"Play Test...\" menu item and navigate to the \"track3p_Window.xml\" file.</li>\n<li>If you select RECORD, use the \"Tools\" => \"Record Test...\" menu and specify \"track3p_Window.xml\" as the file.</li>\n",
       "begin": "record/play",
       "title": "Begin record/play track3p_Window.xml"
     },
