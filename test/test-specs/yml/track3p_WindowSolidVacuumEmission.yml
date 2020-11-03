@@ -12,22 +12,22 @@ steps:
     expect: modelbuilder to open a directory browser dialog
 
   - title:  New project directory yyyy-mm-dd/track3p_Window
-    action: In that dialog, navigate to the test directory you created in the setup procedure and create a subdirectory <pre>track3p_Window</pre>. Select the new subdirectory and click the OK.
+    action: In that dialog, navigate to the test directory you created in the setup procedure and create a subdirectory <tt>track3p_Window</tt>. Select the new subdirectory and click the OK.
     expect: modelbuilder to display a "Specify New Project" dialog with the "Workspace Directory" and "Name (Subdirectory)" fields set.
 
   - title:  Simulation template "ACE3P.sbt"
-    action: Set the "Simulation Template File" to the ACE3P template that is in the ace3p-extensions repository at `simulation-workflows/ACE3P.sbt`.
+    action: Set the "Simulation Template File" to the ACE3P template that is in the ace3p-extensions repository at <tt>simulation-workflows/ACE3P.sbt</tt>.
 
   - title:  Geometry model "Window.ncdf"
-    action: Set the "Geometry File" to `data/model/3d/netcdf/Window.ncdf`. You will need to set the extension dropdown to "netcdf".
+    action: Set the "Geometry File" to <tt>data/model/3d/netcdf/Window.ncdf</tt>. You will need to set the extension dropdown to "netcdf".
 
   - title:  Apply
     action: Click the "Apply" button.
-    expect: modelbuilder to close the dialog, then display the model geometry in the 3D view and update the Attribute Editor to display a "Modules" tab. On some systems, the model is not immediately displayed, but instead it appears when the "Resources" tab is selected. If that occurs, add a comment to the GitLab issue. Verify that there are two items listed in the "Resources" panel, labeled `sbi.default` and `Window`.
+    expect: modelbuilder to close the dialog, then display the model geometry in the 3D view and update the Attribute Editor to display a "Modules" tab. On some systems, the model is not immediately displayed, but instead it appears when the "Resources" tab is selected. If that occurs, add a comment to the GitLab issue. Verify that there are two items listed in the "Resources" panel, labeled <tt>sbi.default</tt> and <tt>Window</tt>.
 
   - title:  Save Project
-    action: Select "Project" => "Save Project"
-    expect: modelbuilder Output Messages to include "Saved Project".
+    action: Select "Project" => "Save Project" menu item.
+    expect: modelbuilder "Output Messages" view to include "Saved Project".
 
 
     # Play or record test script
@@ -39,7 +39,7 @@ steps:
       <li>If you select RECORD, use the "Tools" => "Record Test..." menu and specify "track3p_Window.xml" as the file.</li>
 
   - title:  Select Track3P module
-    action: In the Attribute Editor "Modules" tab, select "Track3P" as the Module. This should display a second dropdown labeled "Track3P. In that second dropdown, select "Multipacting".
+    action: In the Attribute Editor "Modules" tab, select "Track3P". This should display a second dropdown labeled "Track3P. In that second dropdown, select "Multipacting".
     expect: Attribute Editor to display new tabs "Analysis", "Field Scaling", "Emitter", "Material", "Postprocess".
 
   - title:  Set input data
