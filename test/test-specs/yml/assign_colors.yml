@@ -1,63 +1,85 @@
 name: assign-colors
 
 steps:
-  - title: Setup
-    action: Load your desired model.
+  - title:  Setup and create yyyy-mm-dd directory.
+    action: Complete setup items if directed in the gitlab issue.
 
-  - title: Opening your model
-    action: If an "open Data With..." dialog pop-ups select 'SMTK importer for "fileName" into smtk::session::vk::Resource"
-    expect: Model to apper in 3D view.
-  
-  - title:  Setting two-level representation
+  - title:  Geometry model "casting-mesh2.gen"
     action: |
-      In the "Boundary Conditions" panel:
+      <li>Use the "File" => "Open" menu to open the file navigator.</li>
+      <li>Find and enter the "casting-mesh2.gen" file.</li>
+      <li>If an "open Data With..." dialog pops up, select 'SMTK importer for "fileName" into smtk::session::vk::Resource"</li>
+    expect: Model to appear in 3D view.
+  
+  - title:  Set two-level representation
+    action: |
+      Use the "Edit" => "Settings" menu to open the "Settings" dialog:
       <ol>
-        <li>Edit => Settings => Sim Pre-processing.</li>
-        <li>Locate the drop down menu that says "hierarchical" and change it to "two-level".</li>
-        <li>Press "Apply" and "OK" Please note that it is a requirement to select both.</li>
+        <li>Select the "Sim Pre-processing" tab.</li>
+        <li>Locate the drop-down item under "Resource Tree Style".</li>
+        <li>If the drop-down is already set to "two-level", you can "Cancel" the dialog and proceed to the next step.</li>
+        <li>Otherwise change the drop-down "two-level".</li>
+        <li>Press "Apply" and "OK". Please note that it is a requirement to select <em>both</em>.</li>
         <li>Close and restart Modelbuilder.</li>
+        <li>After restarting, load the geometry model (casting-mesh2.gen)
       </ol>
-      expect: Resources tab should be organized with drop down menus named "models", "volume", and "faces".
+    expect: Resources tab should display an expandible tree with first-level items "models", "volume", and "faces".
+
+
+    # Play or record test script
+  - begin:  record/play
+    title:  Begin record/play assign-colors.xml
+    action: |
+      <li>Select whether to record or play the test. In general, you should select PLAY if the xml file is available.</li>
+      <li>If you select PLAY, use the "Tools" => "Play Test..." menu item and navigate to the "assign-colors.xml" file.</li>
+      <li>If you select RECORD, use the "Tools" => "Record Test..." menu and specify "assign-colors.xml" as the file.</li>
 
   - title: View direction
-    action: Locate the view options on the second row of the tool bar and select the positive(+) Y direction.
+    action: Locate the view options toolbar on the second row of tools bar and select the positive(+) Y direction.
     expect: The model should change views.
 
-  - title: Hide and Show
+  - title: Hide all volume entities
     action: |
-      To hide all items in a branch.
       <ol>
-        <li>Click on the first item + shift-click last item + Space</li>
+        <li>In the "Resources" tab, open the top-level "casting-mesh2" item and the next-level item: "volumes".</li>
+        <li>Select all volume entities by: (a) click the first entity, then (b) shift-click last entity, then (c) hit the &lt;Space&gt; key.</li>
       </ol>
-      To show items individually
-      <ol>
-        <li>Select the eye ball</li>
-      </ol>
+    expect: eyeballs next to each volume element to display the closed state.
 
-  - title: Enabling Operations
-    action: Click the "view" tab on the top left of model builder and select the "operations" option.
-    expect: Model builder to open up an "operations" window on the bottom left.
+  - title:  Display operations view
+    action: Click the "view" tab on the top left of model builder and select the "Operations" option.
+    expect: Modelbuilder displays an "operations" panel on the bottom left.
 
-  - title: Adding color options
-    action: In the "operations" window unclick the checked box and locate and double-click "smtk::model::AssignColors"
-    expect: Operation editor to appear.
-
-  - title: Changing the colors
+  - title: Color face entities
     action: |
-      In the operations editor
       <ol>
-        <li>Click the dropdown menu in the "entities" tab.</li>
-        <li>Select all of the entities</li>
-        <li>In the "apply colors" tab select the second option with all of the colors.</li>
-        <li>Change the opacity scale to 0.5</li>
+        <li>In the "Resources" tab, select all "faces" entities by clicking the first entity then shift-clicking the last face entity.</li>
+        <li>In the "Operations" panel, unclick the "Limit by selection" checkbox and locate and double-click "smtk::model::AssignColors".</li>
+        <li>In the "Operation editor", find the "apply colors:" line and click the second button (with the set of colored dots).</li>
+        <li>In the 3D RenderView, click on the background to unselect the model faces.</li>
+        <li>In the "Operation editor", find the "opacity" scale and set it to approximately 0.5.</li>
+        <li>Close the "Operations" panel.</li>
+      <ol>
       </ol>
-      expect: The 3D model will be colored randomly and semi-transparent.
+    expect: The 3D model will be colored randomly and semi-transparent.
       
-  - title: Saving and Closing
+  - end:    record/play
+    title:  Finish record/play
+    action: If you are recording the test, click the "Stop Recording" button to save the xml script.
+    # End record/play
+
+
+  - title: Save resource file
     action: |
       <ol>
-        <li>Close the "operations" window</li>
-        <li>Save the file locally as "casting-color.smtk"</li>
+        <li>Close the "Operations" panel.</li>
+        <li>Use "File" => "Save Resource" to save the file locally as "casting-color.smtk"</li>
       </ol>
-      expect: Two files get written an .smtk and .exo
+    expect: Two files get written":" casting-color.smtk <em>and</em> and an .exo file with a long name (UUID).
 
+  - title:  Close resource
+    action: Use the "File" => "Close Resource" menu item.
+    expect: RenderView and Resource panels to be cleared.
+
+  - title:  Close Modelbuilder
+    action: Use "File" => "Exit" to close modelbuilder.

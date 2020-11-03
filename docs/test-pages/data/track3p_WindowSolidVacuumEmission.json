@@ -3,7 +3,7 @@
   "steps": [
     {
       "action": "Make sure you have already completed the setup procedures first, including creating a new directory for project tests.",
-      "title": "Setup"
+      "title": "Setup and create yyyy-mm-dd directory."
     },
     {
       "action": "Make sure you have clone the ace3p-extensions repository, either https://gitlab.kitware.com/cmb/plugins/ace3p-extensions.git or git@gitlab.kitware.com:cmb/plugins/ace3p-extensions.git, and are using the current master branch.",
@@ -15,9 +15,9 @@
       "title": "New project"
     },
     {
-      "action": "In that dialog, navigate to the test directory you created in the setup procedure and create a subdirectory `track3p_Window`. Select the new subdirectory and click the `OK`.",
+      "action": "In that dialog, navigate to the test directory you created in the setup procedure and create a subdirectory <pre>track3p_Window</pre>. Select the new subdirectory and click the OK.",
       "expect": "modelbuilder to display a \"Specify New Project\" dialog with the \"Workspace Directory\" and \"Name (Subdirectory)\" fields set.",
-      "title": "New project directory"
+      "title": "New project directory yyyy-mm-dd/track3p_Window"
     },
     {
       "action": "Set the \"Simulation Template File\" to the ACE3P template that is in the ace3p-extensions repository at `simulation-workflows/ACE3P.sbt`.",
@@ -33,44 +33,54 @@
       "title": "Apply"
     },
     {
-      "action": "Select Project => Save Project",
+      "action": "Select \"Project\" => \"Save Project\"",
       "expect": "modelbuilder Output Messages to include \"Saved Project\".",
       "title": "Save Project"
     },
     {
+      "action": "<li>Select whether to record or play the test. In general, you should select PLAY if the xml file is available.</li>\n<li>If you select PLAY, use the \"Tools\" => \"Play Test...\" menu item and navigate to the \"track3p_Window.xml\" file.</li>\n<li>If you select RECORD, use the \"Tools\" => \"Record Test...\" menu and specify \"track3p_Window.xml\" as the file.</li>    \n",
+      "begin": "record/play",
+      "title": "Begin record/play track3p_Window.xml"
+    },
+    {
       "action": "In the Attribute Editor \"Modules\" tab, select \"Track3P\" as the Module. This should display a second dropdown labeled \"Track3P. In that second dropdown, select \"Multipacting\".",
-      "expect": "AttributeEditor to display new tabs \"Analysis\", \"Field Scaling\", \"Emitter\", \"Material\", \"Postprocess\"",
-      "title": "Set Track3P"
+      "expect": "Attribute Editor to display new tabs \"Analysis\", \"Field Scaling\", \"Emitter\", \"Material\", \"Postprocess\".",
+      "title": "Select Track3P module"
     },
     {
       "action": "In the \"Input Data\" section, check the \"Source\" checkbox. A \"Path\" field should appear - copy this text into it\":\" /global/cscratch1/sd/johnt/test1/JOBID/s3p_results",
-      "expect": "TODO",
       "title": "Set input data"
     },
     {
-      "action": "In the \"Field Scaling\" tab. Set \"Type\" to \"Input Port Power -W\"",
-      "expect": "TODO",
+      "action": "Select the \"Analysis\" tab, then\n<ol>\n  <li>Set \"Total Particle Tracking Time (Cycles)\"\" to 10</li>\n  <li>Set \"Localize Bins\" to 128</li>\n  <li>Enable \"Solid Region\" and set the dropdown field to \"volume 2\"</li>\n  <li>Enable \"Vacuum Region\" and set the dropdown field to \"volume 1\"</li>\n</ol>\n",
+      "title": "Analysis"
+    },
+    {
+      "action": "Select the \"Field\" tab, then\n<ol>\n <li>Set \"Type\" to \"Input Port Power - W\".</li>\n <li>Set Set \"Scan Token\" to \"0\":\"\" Single Field Level\".</li>\n <li>Set \"Scale\" to 8.0e+6</li>\n</ol>\n",
       "title": "Field Scaling"
     },
     {
-      "action": "In the \"Analysis\" panel \n<ol>\n  <li>Select Analysis tab</li>\n  <li>Total Particle Tracking Time (Cycles) to 10</li>\n  <li>Localize Bins to 128</li>\n  <li>Enable Solid Region and set to \"volume 2\"</li>\n  <li>Enable Vacuum Regoin and set to \"volume 1\"</li>\n</ol>\n",
-      "title": "Analysis tab"
+      "action": "Select the \"Emmiter\" tab, then\n<ol>\n  <li>Click \"New\" to create an attribute and rename it \"emitter-type5\"</li>\n  <li>Set \"Type\" to \"5\":\"\" Solid Electronic Surface\"</li>\n  <li>Set \"Region Bounds Min (m)\" to 0, 0, -0.002</li>\n  <li>Set \"Region Bounds Max (m)\" to 0.045, 0.045, 0</li>\n  <li>In the \"Attribute Associations\", assign \"surface 6 - Window\"</li>\n</ol>\n\nIn the same \"Emmitter\" Panel\n<ol>\n  <li>Click \"New\" to create a second attribute and rename it emitter-type2</li>\n  <li>Set \"Region Bounds Min (m)\" to 0.001, 0.001, -0.002</li>\n  <li>Set \"Region Bounds Max (m)\" to 0.045, 0.045, 0</li>\n  <li>In the \"Attribute Associations\", assign \"surface 6 - Window\"</li>\n</ol>\n",
+      "title": "Emmitter"
     },
     {
-      "action": "In the \"Field\" panel\n<ol>\n <li>Select Field Scaling.</li>\n <li>Set the \"Scan Token\" to \"0\":\"\" Single Field Level\".</li>\n <li>Set the \"Scale\" to 8.0e+6</li>\n</oi>\n",
-      "title": "Field Scaling"
+      "action": "Select the \"Material\" tab, then\n<ol>\n  <li>Select \"Absorber\" and click \"New\"; assign surfaces 1, 2, 7, 8.</li>\n  <li>Select Primary and click \"New\"; click the \"Secondary\" checkbox; assign surface 6.</li>\n  <li>Select Primary and click \"New\"; assign volume 2.</li>\n</ol>\n",
+      "title": "Material"
     },
     {
-      "action": "In the \"Emmiter\" Panel\n<ol>\n  <li>Emitters section click \"New\", emitter-type5</li>\n  <li>Set \"Type\" to \"5\":\"\" Solid Electronic Surface\"</li>\n  <li>Region Bounds Min 0,0, -0.002</li>\n  <li>Region Bounds Max 0.045, 0.045, 0</li>\n  <li>Association Widget assign surface 6</li>\n</ol>\nIn the same \"Emmitter\" Panel\n<ol>\n  <li>\"New\" emitter-type2</li>\n  <li>Region Bounds Min 0.001, 0.001, -0.002</li>\n  <li>Region Bounds Max 0.045, 0.045, 0.06</li>\n  <li>Association Widget assign surface 6</li>\n</oi>\n",
-      "title": "Emmitter Type"
+      "action": "From the \"Project\" menu, select \"Save Project\".",
+      "expect": "modelbuilder Output Messages to include \"Saved Project\".",
+      "title": "Save Project"
     },
     {
-      "action": "In the \"Material\" Panel\n<ol>\n  <li>Select Absorber and click \"New\" select surfaces 1, 2, 7, 8.</li>\n  <li>Select Primary => \"New\" Enable Secondary and select surface 6</li>\n  <li>Select Primary => \"New\" and select surface 2</li>\n</ol>\n",
-      "title": "Material Type"
+      "action": "If you are recording the test, click the \"Stop Recording\" button to save the xml script.",
+      "end": "record/play",
+      "title": "Finish record/play"
     },
     {
-      "action": "From the \"Project\" menu\n<ol>\n  <li>Project => Save Project</li>\n  <li>Project => Export Project</li>\n  <li>Apply</li>\n  <li>Check that file was generated track3p_Window.track3p</li>\n</ol>\n",
-      "title": "Saving and Exporting"
+      "action": "From the \"Project\" menu\n<ol>\n  <li>Select \"Export Project\" to open the \"Simulation Export Dialog\".</li>\n  <li>Click the \"Apply\" button. Expect the dialog to close.</li>\n</ol>\n",
+      "expect": "modelbuilder generated the file \"track3p_Window.track3p\".",
+      "title": "Export"
     }
   ]
 }

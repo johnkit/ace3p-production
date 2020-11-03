@@ -1,8 +1,8 @@
 name: Omega3P Test 1
 
 steps:
-  - title:  Setup
-    action: Complete the setup procedures first.
+  - title:  Setup and create yyyy-mm-dd directory.
+    action: Complete the setup procedures first, including creating a new directory for test files.
 
   - title:  Clone ace3p-extensions repository
     action: |
@@ -15,7 +15,7 @@ steps:
     expect: modelbuilder to open a directory browser dialog
 
   - title:  New project directory
-    action: In that dialog, navigate to the test directory you created in the setup procedure and create a subdirectory `omega3p-test1`. Select the new subdirectory and click the `OK`.
+    action: In that dialog, navigate to the test directory you created in the setup procedure and create a subdirectory <strong>yyyy-mm-dd/omega3p-test1</strong>. Select the new subdirectory and click the `OK`.
     expect: modelbuilder to display a "Specify New Project" dialog with the "Workspace Directory" and "Name (Subdirectory)" fields set.
 
   - title:  Simulation template "ACE3P.sbt"
@@ -27,6 +27,15 @@ steps:
   - title:  Apply
     action: Click the "Apply" button.
     expect: modelbuilder to close the dialog, then display the model geometry in the 3D view and update the Attribute Editor to display a "Modules" tab. On some systems, the model is not immediately displayed, but instead it appears when the "Resources" tab is selected. If that occurs, add a comment to the GitLab issue. Verify that there are two items listed in the "Resources" panel, labeled `sbi.default` and `pillbox4`.
+
+
+    # Play or record test script
+  - begin:  record/play
+    title:  Begin record/play omega3p-test1.xml
+    action: |
+      <li>Select whether to record or play the test. In general, you should select PLAY if the xml file is available.</li>
+      <li>If you select PLAY, use the "Tools" => "Play Test..." menu item and navigate to the "omega3p-test1.xml" file.</li>
+      <li>If you select RECORD, use the "Tools" => "Record Test..." menu and specify "omega3p-test1.xml" as the file.</li>
 
   - title:  Set Omega3P module
     action: In the "Attribute Editor" panel, select the "Omega3P" option in the "Modules" tab.
@@ -48,6 +57,12 @@ steps:
   - title:  Save Project
     action: Click the Project => Project Save menu item.
     expect: modelbuilder to display "Saved project" in the "Output Messages" panel.
+
+  - end:    record/play
+    title:  Finish record/play
+    action: If you are recording the test, click the "Stop Recording" button to save the xml script.
+    # End record/play
+
 
   - title:  Begin Export Project
     action: Select the Project => Export Project menu item.
