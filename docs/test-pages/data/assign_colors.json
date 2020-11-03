@@ -1,0 +1,63 @@
+{
+  "name": "assign-colors",
+  "steps": [
+    {
+      "action": "Complete setup items if directed in the gitlab issue.",
+      "title": "Setup and create yyyy-mm-dd directory."
+    },
+    {
+      "action": "<li>Use the \"File\" => \"Open\" menu to open the file navigator.</li>\n<li>Find and enter the \"casting-mesh2.gen\" file.</li>\n<li>If an \"open Data With...\" dialog pops up, select 'SMTK importer for \"fileName\" into smtk::session::vk::Resource\"</li>\n",
+      "expect": "Model to appear in 3D view.",
+      "title": "Geometry model \"casting-mesh2.gen\""
+    },
+    {
+      "action": "Use the \"Edit\" => \"Settings\" menu to open the \"Settings\" dialog:\n<ol>\n  <li>Select the \"Sim Pre-processing\" tab.</li>\n  <li>Locate the drop-down item under \"Resource Tree Style\".</li>\n  <li>If the drop-down is already set to \"two-level\", you can \"Cancel\" the dialog and proceed to the next step.</li>\n  <li>Otherwise change the drop-down \"two-level\".</li>\n  <li>Press \"Apply\" and \"OK\". Please note that it is a requirement to select <em>both</em>.</li>\n  <li>Close and restart Modelbuilder.</li>\n  <li>After restarting, load the geometry model (casting-mesh2.gen)\n</ol>\n",
+      "expect": "Resources tab should display an expandible tree with first-level items \"models\", \"volume\", and \"faces\".",
+      "title": "Set two-level representation"
+    },
+    {
+      "action": "<li>Select whether to record or play the test. In general, you should select PLAY if the xml file is available.</li>\n<li>If you select PLAY, use the \"Tools\" => \"Play Test...\" menu item and navigate to the \"assign-colors.xml\" file.</li>\n<li>If you select RECORD, use the \"Tools\" => \"Record Test...\" menu and specify \"assign-colors.xml\" as the file.</li>\n",
+      "begin": "record/play",
+      "title": "Begin record/play assign-colors.xml"
+    },
+    {
+      "action": "Locate the view options toolbar on the second row of tools bar and select the positive(+) Y direction.",
+      "expect": "The model should change views.",
+      "title": "View direction"
+    },
+    {
+      "action": "<ol>\n  <li>In the \"Resources\" tab, open the top-level \"casting-mesh2\" item and the next-level item: \"volumes\".</li>\n  <li>Select all volume entities by: (a) click the first entity, then (b) shift-click last entity, then (c) hit the &lt;Space&gt; key.</li>\n</ol>\n",
+      "expect": "eyeballs next to each volume element to display the closed state.",
+      "title": "Hide all volume entities"
+    },
+    {
+      "action": "Click the \"view\" tab on the top left of model builder and select the \"Operations\" option.",
+      "expect": "Modelbuilder displays an \"operations\" panel on the bottom left.",
+      "title": "Display operations view"
+    },
+    {
+      "action": "<ol>\n  <li>In the \"Resources\" tab, select all \"faces\" entities by clicking the first entity then shift-clicking the last face entity.</li>\n  <li>In the \"Operations\" panel, unclick the \"Limit by selection\" checkbox and locate and double-click \"smtk::model::AssignColors\".</li>\n  <li>In the \"Operation editor\", find the \"apply colors:\" line and click the second button (with the set of colored dots).</li>\n  <li>In the 3D RenderView, click on the background to unselect the model faces.</li>\n  <li>In the \"Operation editor\", find the \"opacity\" scale and set it to approximately 0.5.</li>\n  <li>Close the \"Operations\" panel.</li>\n<ol>\n</ol>\n",
+      "expect": "The 3D model will be colored randomly and semi-transparent.",
+      "title": "Color face entities"
+    },
+    {
+      "action": "If you are recording the test, click the \"Stop Recording\" button to save the xml script.",
+      "end": "record/play",
+      "title": "Finish record/play"
+    },
+    {
+      "action": "<ol>\n  <li>Close the \"Operations\" panel.</li>\n  <li>Use \"File\" => \"Save Resource\" to save the file locally as \"casting-color.smtk\"</li>\n</ol>\n",
+      "expect": "Two files get written\":\" casting-color.smtk <em>and</em> and an .exo file with a long name (UUID).",
+      "title": "Save resource file"
+    },
+    {
+      "action": "Use the \"File\" => \"Close Resource\" menu item.",
+      "expect": "RenderView and Resource panels to be cleared.",
+      "title": "Close resource"
+    },
+    {
+      "action": "Use \"File\" => \"Exit\" to close modelbuilder.",
+      "title": "Close Modelbuilder"
+    }
+  ]
+}

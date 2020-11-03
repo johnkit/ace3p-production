@@ -1,0 +1,112 @@
+name: track3p_WindowSolidVacuumEmission
+
+steps:
+  - title:  Setup and create yyyy-mm-dd directory.
+    action: Make sure you have already completed the setup procedures first, including creating a new directory for project tests.
+
+  - title:  ace3p-extensions repository
+    action: Make sure you have clone the ace3p-extensions repository, either https://gitlab.kitware.com/cmb/plugins/ace3p-extensions.git or git@gitlab.kitware.com:cmb/plugins/ace3p-extensions.git, and are using the current master branch.
+
+  - title:  New project
+    action: Select Project => New Project...
+    expect: modelbuilder to open a directory browser dialog
+
+  - title:  New project directory yyyy-mm-dd/track3p_Window
+    action: In that dialog, navigate to the test directory you created in the setup procedure and create a subdirectory <pre>track3p_Window</pre>. Select the new subdirectory and click the OK.
+    expect: modelbuilder to display a "Specify New Project" dialog with the "Workspace Directory" and "Name (Subdirectory)" fields set.
+
+  - title:  Simulation template "ACE3P.sbt"
+    action: Set the "Simulation Template File" to the ACE3P template that is in the ace3p-extensions repository at `simulation-workflows/ACE3P.sbt`.
+
+  - title:  Geometry model "Window.ncdf"
+    action: Set the "Geometry File" to `data/model/3d/netcdf/Window.ncdf`. You will need to set the extension dropdown to "netcdf".
+
+  - title:  Apply
+    action: Click the "Apply" button.
+    expect: modelbuilder to close the dialog, then display the model geometry in the 3D view and update the Attribute Editor to display a "Modules" tab. On some systems, the model is not immediately displayed, but instead it appears when the "Resources" tab is selected. If that occurs, add a comment to the GitLab issue. Verify that there are two items listed in the "Resources" panel, labeled `sbi.default` and `Window`.
+
+  - title:  Save Project
+    action: Select "Project" => "Save Project"
+    expect: modelbuilder Output Messages to include "Saved Project".
+
+
+    # Play or record test script
+  - begin:  record/play
+    title:  Begin record/play track3p_Window.xml
+    action: |
+      <li>Select whether to record or play the test. In general, you should select PLAY if the xml file is available.</li>
+      <li>If you select PLAY, use the "Tools" => "Play Test..." menu item and navigate to the "track3p_Window.xml" file.</li>
+      <li>If you select RECORD, use the "Tools" => "Record Test..." menu and specify "track3p_Window.xml" as the file.</li>
+
+  - title:  Select Track3P module
+    action: In the Attribute Editor "Modules" tab, select "Track3P" as the Module. This should display a second dropdown labeled "Track3P. In that second dropdown, select "Multipacting".
+    expect: Attribute Editor to display new tabs "Analysis", "Field Scaling", "Emitter", "Material", "Postprocess".
+
+  - title:  Set input data
+    action: In the "Input Data" section, check the "Source" checkbox. A "Path" field should appear - copy this text into it":" /global/cscratch1/sd/johnt/test1/JOBID/s3p_results
+    
+  - title: Analysis
+    action: |
+      Select the "Analysis" tab, then
+      <ol>
+        <li>Set "Total Particle Tracking Time (Cycles)"" to 10</li>
+        <li>Set "Localize Bins" to 128</li>
+        <li>Enable "Solid Region" and set the dropdown field to "volume 2"</li>
+        <li>Enable "Vacuum Region" and set the dropdown field to "volume 1"</li>
+      </ol>
+
+  - title: Field Scaling
+    action: |
+      Select the "Field" tab, then
+      <ol>
+       <li>Set "Type" to "Input Port Power - W".</li>
+       <li>Set Set "Scan Token" to "0":"" Single Field Level".</li>
+       <li>Set "Scale" to 8.0e+6</li>
+      </ol>
+
+  - title: Emmitter
+    action: |
+      Select the "Emmiter" tab, then
+      <ol>
+        <li>Click "New" to create an attribute and rename it "emitter-type5"</li>
+        <li>Set "Type" to "5":"" Solid Electronic Surface"</li>
+        <li>Set "Region Bounds Min (m)" to 0, 0, -0.002</li>
+        <li>Set "Region Bounds Max (m)" to 0.045, 0.045, 0</li>
+        <li>In the "Attribute Associations", assign "surface 6 - Window"</li>
+      </ol>
+
+      In the same "Emmitter" Panel
+      <ol>
+        <li>Click "New" to create a second attribute and rename it emitter-type2</li>
+        <li>Set "Region Bounds Min (m)" to 0.001, 0.001, -0.002</li>
+        <li>Set "Region Bounds Max (m)" to 0.045, 0.045, 0</li>
+        <li>In the "Attribute Associations", assign "surface 6 - Window"</li>
+      </ol>
+
+  - title: Material
+    action: |
+      Select the "Material" tab, then
+      <ol>
+        <li>Select "Absorber" and click "New"; assign surfaces 1, 2, 7, 8.</li>
+        <li>Select Primary and click "New"; click the "Secondary" checkbox; assign surface 6.</li>
+        <li>Select Primary and click "New"; assign volume 2.</li>
+      </ol>
+
+  - title:  Save Project
+    action: From the "Project" menu, select "Save Project".
+    expect: modelbuilder Output Messages to include "Saved Project".
+
+  - end:    record/play
+    title:  Finish record/play
+    action: If you are recording the test, click the "Stop Recording" button to save the xml script.
+    # End record/play
+
+
+  - title: Export
+    action: |
+      From the "Project" menu
+      <ol>
+        <li>Select "Export Project" to open the "Simulation Export Dialog".</li>
+        <li>Click the "Apply" button. Expect the dialog to close.</li>
+      </ol>
+    expect: modelbuilder generated the file "track3p_Window.track3p".
