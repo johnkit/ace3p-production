@@ -1,3 +1,22 @@
+## 07-Dec-2020
+
+Updates job-submission scripts to include NERSC modules for
+running latest ACE3P builds.
+
+
+## 23-Nov-2020
+
+Adds NERSC file browser dock widget, and revises login logic to be
+consistent with jobs panel dock widget.
+
+
+## 08-Nov-2020
+
+Adds Omega3P EigenSolver option "CORK".
+
+Updates internal library with sundry bug fixes.
+
+
 ## 21-Jul-2020
 
 Fixes directory browser issues when creating new project.
