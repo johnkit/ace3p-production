@@ -23,18 +23,25 @@ fi
 
 cmake \
   -GNinja \
+  -Dace3p_PACKAGE_FILE_NAME:STRING=${package_name} \
   -DCMAKE_INSTALL_PREFIX:PATH=install \
-  -DCMB_PACKAGE_FILE_NAME:STRING=${package_name} \
+  -DCMAKE_OSX_DEPLOYMENT_TARGET:STRING=10.14 \
+  -Dcmb_FETCH_LFS:BOOL=ON \
+  -DENABLE_aevaexampledata:BOOL=OFF \
   -DENABLE_cmbusersguide:BOOL=OFF \
   -DENABLE_cmbworkflows:BOOL=OFF \
   -DENABLE_DOCUMENTATION:BOOL=OFF \
+  -DENABLE_openssl:BOOL=ON \
   -DENABLE_python3:BOOL=ON \
   -DQt5_DIR:PATH=/Users/john/projects/qt.io/5.12.6/clang_64/lib/cmake/Qt5 \
   -DENABLE_smtkace3p:BOOL=ON \
-  -DENABLE_smtkprojectmanager:BOOL=ON \
   -DENABLE_smtkresourcemanagerstate:BOOL=OFF \
   -DENABLE_smtkusersguide:BOOL=OFF \
-  -Dsuperbuild_download_location:PATH=/Users/johnt/projects/downloads \
+  -DSMTK_EXTRA_CMAKE_ARGUMENTS="-DSMTK_ENABLE_OPERATION_THREADS:BOOL=OFF;-DSMTK_ENABLE_PROJECT_UI:BOOL=OFF" \
+  -Dsmtk_FETCH_LFS:BOOL=OFF \
+  -Dsuperbuild_download_location:PATH=/Users/john/projects/downloads \
+  -DSUPERBUILD_ENABLE_OPENSSL:BOOL=ON \
+  -DSUPERBUILD_PACKAGE_MODE:STRING=ace3p \
   -DTEST_cmb:BOOL=OFF \
   -DTEST_smtk:BOOL=OFF \
   -DUSE_SYSTEM_qt5:BOOL=ON \
@@ -42,5 +49,5 @@ cmake \
 
 ninja
 
-ctest -R modelbuilder -VV > ctest.log 2>&1
+ctest -R cpack -VV > ctest.log 2>&1
 ls -l
