@@ -5,14 +5,14 @@ steps:
   - title:  Record package info
     action: If testing was specified in a GitLab issue and download folder, add a comment to the GitLab issue indicating which packages are available, which one(s) to be tested. You can abbreviate using "linux", "macOS", and "windows".
 
-  - title:  Delete previous modelbuilder packages
-    action: On the test machine, move any previous modelbuilder downloads/installs to the trash folder.
+  - title:  Download modelbuilder package
+    action: Download the modelbuilder package(s) to test and unzip into the test directory. Note that it might take several minutes to unzip the Windows package.
 
   - title:  Create root test folder
     action: Create a test directory using a naming convention such as <tt>.../cmb/testing/yyyy-mm-dd</tt>.
 
-  - title:  Download modelbuilder package
-    action: Download the modelbuilder package(s) to test and unzip into the test directory. Note that it might take several minutes to unzip the Windows package.
+  - title:  Delete previous modelbuilder packages
+    action: On the test machine, move any previous modelbuilder downloads/installs to the trash folder.
 
   - title:  Delete any previous modelbuilder settings files
     action: |
@@ -20,9 +20,12 @@ steps:
       <li> On macOS, the directory is typically <tt>~/.config/modelbuilder</tt></li>
       <li> On Windows, the directory is typically <tt>~/AppData/Roaming/modelbuilder</tt></li>
 
+  - title:  [Windows] Create shortcut
+    action: Create a shortcut to the <tt>bin/modelbuileder.exe</tt> file. Right click on the shortcut to open its <strong>Properties</strong>. Edit the <tt>Target</tt> field to add " -dr" after the path to modelbuilder. Then close the panel. Use the shortcut for all tests.
+
   - title:  Configure modelbuilder executable
     action: |
-      <li>Start the modelbuilder executable</li>
+      <li>Start the modelbuilder executable. On Windows, use the shortcut. On linux, run <tt>modelbuilder -dr</tr> from the command line.</li>
       <li>Click on the toolbar button "Apply changes to parameters automatically". The icon is in the first (top) toolbar and looks like a 3D box with an arrow pointing to the upper right.</li>
       <li>Close all panels except for "Attribute Editor", "Output Messages", "Resources". Undock and drag the "Attribute Editor" over the "Resources" panel so that they dock as tabs.</li>
       <li>In the "View" => "Toolbars" menu item, uncheck the "Measurement Tools" item to hide the "Ruler" icon.</li>
@@ -37,19 +40,19 @@ steps:
       <li>Close the Plugin Manager dialog.</li>
     expect: modelbuilder menu to now include a "Project" menu.
 
-  - title:  Set two-level display setting
-    action: |
-      <ol>
-        <li>Select the "Edit" => "Settings..." menu item to open the Settings dialog. (On macOS, the menu is "modelbuilder" => "Preferences".)</li>
-        <li>Select the "Sim Pre-processing" tab.</li>
-        <li>Locate the drop-down item under "Resource Tree Style".</li>
-        <li>If the drop-down is already set to "two-level", you can "Cancel" the dialog and proceed to the next step.</li>
-        <li>Otherwise change the drop-down "two-level".</li>
-        <li>Press "Apply" and "OK". Please note that it is a requirement to select <em>both</em>.</li>
-      </ol>
+  # - title:  Set two-level display setting
+  #   action: |
+  #     <ol>
+  #       <li>Select the "Edit" => "Settings..." menu item to open the Settings dialog. (On macOS, the menu is "modelbuilder" => "Preferences".)</li>
+  #       <li>Select the "Sim Pre-processing" tab.</li>
+  #       <li>Locate the drop-down item under "Resource Tree Style".</li>
+  #       <li>If the drop-down is already set to "two-level", you can "Cancel" the dialog and proceed to the next step.</li>
+  #       <li>Otherwise change the drop-down "two-level".</li>
+  #       <li>Press "Apply" and "OK". Please note that it is a requirement to select <em>both</em>.</li>
+  #     </ol>
 
-  - title: Restart modelbuilder
-    action: |
-      <li>Exit modelbuilder</li>
-      <li>Restart modelbuilder</li>
-    expect: Verify that the widget layout is the same and that the "Project" menu is still displayed.
+  # - title: Restart modelbuilder
+  #   action: |
+  #     <li>Exit modelbuilder</li>
+  #     <li>Restart modelbuilder</li>
+  #   expect: Verify that the widget layout is the same and that the "Project" menu is still displayed.

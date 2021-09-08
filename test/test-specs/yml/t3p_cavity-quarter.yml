@@ -7,6 +7,10 @@ steps:
   - title:  Clone ace3p-extensions repository
     action: Make sure you have clone the ace3p-extensions repository, either https://gitlab.kitware.com/cmb/plugins/ace3p-extensions.git or git@gitlab.kitware.com:cmb/plugins/ace3p-extensions.git, and are using the current master branch.
 
+    # Todo add action
+  - title: Maximize screen, Load project plugin, pull sidebar to 1/3 screen width
+    action: Todo
+
   - title:  New project
     action: Select the "Project" => "New Project..." menu item.
     expect: modelbuilder to open a directory browser dialog
@@ -114,7 +118,6 @@ steps:
     action: If you are recording the test, click the "Stop Recording" button to save the xml script.
     # End record/play
 
-
   - title: Export
     action: |
       From the "Project" menu
@@ -123,3 +126,7 @@ steps:
         <li>Click the "Apply" button. Expect the dialog to close.</li>
       </ol>
     expect: modelbuilder generated the file "t3_cavity-quarter.t3p".
+
+  - title:  Close Project
+    action: Select the Project => Close Project menu item.
+    expect: modelbuilder to clear both tabs ("Attribute Editor", "Resources") and the 3D display.
