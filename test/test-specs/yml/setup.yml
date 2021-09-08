@@ -20,7 +20,7 @@ steps:
       <li> On macOS, the directory is typically <tt>~/.config/modelbuilder</tt></li>
       <li> On Windows, the directory is typically <tt>~/AppData/Roaming/modelbuilder</tt></li>
 
-  - title:  [Windows] Create shortcut
+  - title:  (Windows) Create shortcut
     action: Create a shortcut to the <tt>bin/modelbuileder.exe</tt> file. Right click on the shortcut to open its <strong>Properties</strong>. Edit the <tt>Target</tt> field to add " -dr" after the path to modelbuilder. Then close the panel. Use the shortcut for all tests.
 
   - title:  Configure modelbuilder executable

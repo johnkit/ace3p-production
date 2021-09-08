@@ -2,12 +2,12 @@
   "name": "Omega3P Test 1",
   "steps": [
     {
-      "action": "Complete the setup procedures first, including creating a new directory for test files.",
-      "title": "Setup and create yyyy-mm-dd directory."
+      "action": "Clone the ace3p-extensions repository, either\n<a class=\"literal-link\" target=\"_blank\" href=\"https://gitlab.kitware.com/cmb/plugins/ace3p-extensions.git\"></a>\nor <a class=\"literal-link\" target=\"_blank\" href=\"git@gitlab.kitware.com:cmb/plugins/ace3p-extensions.git\"></a>.\n",
+      "title": "Clone or update ace3p-extensions repository"
     },
     {
-      "action": "Clone the ace3p-extensions repository, either\n<a class=\"literal-link\" target=\"_blank\" href=\"https://gitlab.kitware.com/cmb/plugins/ace3p-extensions.git\"></a>\nor <a class=\"literal-link\" target=\"_blank\" href=\"git@gitlab.kitware.com:cmb/plugins/ace3p-extensions.git\"></a>.\n",
-      "title": "Clone ace3p-extensions repository"
+      "action": "Todo",
+      "title": "Load project plugin"
     },
     {
       "action": "Select Project => New Project...",

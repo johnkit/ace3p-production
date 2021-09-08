@@ -1,0 +1,19 @@
+{
+  "name": "external-connect",
+  "steps": [
+    {
+      "action": "In the \"File\" menu, select the \"Export Simuation...\" item, which brings up a file dialog.",
+      "title": "Export Simulation"
+    },
+    {
+      "action": "In the package folder, find the \"ExportConnectTest.py\" script. <li>On linux, its in the share/cmb/workflows/ACE3P/internal folder</li> <li>On macOS, it's in the modelbuilder.app/Contents/Resource/workflows/ACE3P/internal folder</li> <li>On Windows, share/cmb/workflows/ACE3P/internal folder</li>",
+      "expect": "modelbuilder will display a small dialog with the work \"Parameters\" at the top and \"Appy\" and \"Cancel\" buttons",
+      "title": "Find the ExportConnection.py file"
+    },
+    {
+      "action": "The dialog might stay open for a few seconds.",
+      "expect": "The \"Output Messages\" view should display the message \"INFO: ExportConnectTest.ExportConnectTest: Operation succeeded\"",
+      "title": "Click the \"Apply\" button"
+    }
+  ]
+}
